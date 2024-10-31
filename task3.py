@@ -7,6 +7,7 @@ Write a python script display the values of the dictionary
 Note: You are not actually sorting the dictionary, but creating a new list from the values, and
 sorting those
 (3 points)
+<key>: <value>
 """
 sortMe = {
     1: -2, 
@@ -24,9 +25,29 @@ sortMe = {
     20: 3
   }
 
+def sortKey(dict):
+    sortedKey=[]
+    for i in dict:
+        sortedKey.append(i)
+    sortedKey.sort()
+
+    return sortedKey
+
+def sortValue(dict):
+    sortedValue=[]
+    for i in dict:
+        sortedValue.append(dict[i])
+    sortedValue.sort()
+
+    return sortedValue
+
+
+
 keys = []
 values = []
 
+keys = sortKey(sortMe)
+values = sortValue(sortMe)
 
 
 assert keys == [1, 2, 4, 6, 9, 10, 11, 13, 14, 15, 17, 18, 20]
