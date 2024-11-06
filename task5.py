@@ -21,7 +21,6 @@ inventory = { # Quantity : Item
     'fish'  :1,
     'stone' :14,
     'wool'  :1,
-
     }
 global items
 items = ('food' ,'water','rope' ,'torch','sack' ,'wood' ,'iron' ,'steel','ginger','garlic','fish' ,'stone','wool')
@@ -32,14 +31,24 @@ def showInventory():
         if inventory[i]==0:
             pass
         else:
-            print("",inventory[i], i)
+            print("",inventory[i], i,"\n")
 
 def dropItem():
-    x=input("Do you want to drop any items?")
+    a=input("What item would you like to drop?\n")
+    test=0
+    for i in items:
+        if a==i and inventory[i]>0:
+            inventory[i] -= 1
+            showInventory()
+            test=1
+    if test==0:
+        print("You were unable to drop that item.")
+
+
 
 def getItem():
     i = random.randint(0,12)
-    print("You have found a piece of", items[i], "on the ground.\nDo you want to pick it up?")
+    print("\nYou have found a piece of", items[i], "on the ground.\nDo you want to pick it up?\n")
     while True:
         x = input()
         if x=="yes":
@@ -51,15 +60,13 @@ def getItem():
             showInventory()
         else:
             print("Invalid input, please try again")
-    print("i did it maybe")
 
 
 
-print('Welcome to The Real World \n\n Inputs: \n Use "get item" to add the item to your inventory\n Use "drop item" to drop the item from your inventory\n Use "show inventory" to show how many items you have in your inventory')
+print('Welcome to The Real World \n\nInputs: \n Use "get item" to add an item to your inventory\n Use "drop item" to drop the item from your inventory\n Use "show inventory" to show how many items you have in your inventory\n')
 
 
 while True:
-    getItem()
     x = input()
     if x=="get item":
         getItem()
@@ -68,9 +75,5 @@ while True:
     elif x=="show inventory":
         showInventory()
     else:
-        for i in items:
-            if x=="drop" + i:
-                inventory[i] -= 1
-                showInventory()
-
-        print("Invalid input, please try again")
+        print("Invalid input, please try again.")
+    print('\nInputs:\n "get item"\n "drop item"\n "show inventory"\n')
